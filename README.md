@@ -4,9 +4,21 @@ Middleware for ring to provide configurable cache control headers to browsers.
 
 ## Usage
 
-Add this to your `project.clj` dependencies:
+Add this to your Leiningen `project.clj` dependencies:
 
-[slester/ring-browser-caching "0.1.0"]
+[![Clojars Project](http://clojars.org/slester/ring-browser-caching/latest-version.svg)](http://clojars.org/slester/ring-browser-caching)
+
+To use, simply provide a map of filetypes with the associated number of seconds you want to send for `Cache-Control: max-age=`.
+
+```clojure
+(ns app.core
+  (:use  [ring.middleware.browser-caching])
+
+(def app
+  (wrap-browser-caching handler {"text/javascript" 360000
+                                 "text/html" 0})
+```
+
 
 ## License
 
