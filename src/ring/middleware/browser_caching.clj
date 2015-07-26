@@ -1,7 +1,6 @@
 (ns ring.middleware.browser-caching
   (:require [ring.util.response :as response]
-            [clojure.string :as str]
-            ))
+            [clojure.string :as str]))
 
 (def http-cache-control "Cache-Control")
 (def http-etag "ETag")

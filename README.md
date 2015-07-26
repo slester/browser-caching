@@ -4,7 +4,9 @@ Middleware for ring to provide configurable cache control headers to browsers.
 
 ## Usage
 
-to-do
+Add this to your `project.clj` dependencies:
+
+[slester/ring-browser-caching "0.1.0"]
 
 ## License
 
