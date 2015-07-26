@@ -1,4 +1,4 @@
-(defproject cache-control "0.1.0-SNAPSHOT"
+(defproject ring.middleware.browser-caching "0.1.0"
   :description "Provides ring middleware for browser cache hinting by file type"
   :url "http://github.com/slester/browser-caching"
   :license {:name "Eclipse Public License"
