@@ -3,18 +3,17 @@
             [clojure.string :as str]))
 
 (def http-cache-control "Cache-Control")
-(def http-etag "ETag")
 
 (defn- has-cache-headers? [res]
   "Does the response already have cache control headers?"
-
-  (not (nil? (get-in res [:headers http-cache-control]))))
+  (some? (get-in res [:headers http-cache-control])))
 
 (defn- get-content-type [res]
   "Gets the Content-Type from the response's headers."
-  ((str/split (get-in res [:headers "Content-Type"]) #";") 0))
+  (some-> (get-in res [:headers "Content-Type"]) (str/split #";") first))
 
 (defn wrap-browser-caching [handler filetypes]
+  {:pre [(map? filetypes)]}
   "Executes the handler using the filetype map found in the second parameter.
   The filetypes map should map extension to the number of seconds desired for max-age, e.g. {\"text/javascript\" 3600}"
   (fn [req]
